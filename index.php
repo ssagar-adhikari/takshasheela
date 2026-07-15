@@ -1,5 +1,6 @@
 <?php
 require __DIR__ . '/includes/site.php';
+require __DIR__ . '/includes/wellness.php';
 render_header('Ayurvedic healing and restorative stays', 'Personalised Ayurvedic programs, therapies, and peaceful accommodation in Kathmandu.', 'dark');
 ?>
 <section class="home-hero">
@@ -33,11 +34,11 @@ render_header('Ayurvedic healing and restorative stays', 'Personalised Ayurvedic
 
 <section class="section">
     <div class="shell">
-        <div class="section-heading" data-reveal><p class="eyebrow">Packages</p><h2>Our packages that heal the past and open the future.</h2><p class="lede">From focused therapies to immersive stays, every experience is grounded in individual assessment and gentle progression.</p></div>
+        <div class="home-products__heading" data-reveal><div><p class="eyebrow">Packages</p><h2>Our packages that heal the past and open the future.</h2></div><div><p>From focused therapies to immersive stays, every experience is grounded in individual assessment and gentle progression.</p><a class="text-link" href="programs.php">View all packages</a></div></div>
         <div class="card-grid">
-            <article class="feature-card" data-reveal><img src="assets/images/wellness.jpg" alt="Ayurvedic wellness program" loading="lazy"><div class="feature-card__body"><h3>Wellness programs</h3><p>Multi-day journeys combining consultation, therapies, nourishing food, movement, and deep rest.</p><a class="text-link" href="programs.php">Explore programs</a></div></article>
-            <article class="feature-card" data-reveal><img src="assets/images/therapy.jpg" alt="Personalised Ayurvedic therapy" loading="lazy"><div class="feature-card__body"><h3>Ayurvedic therapies</h3><p>Focused, practitioner-guided treatments selected for your constitution and wellbeing goals.</p><a class="text-link" href="therapies.php">View therapies</a></div></article>
-            <article class="feature-card" data-reveal><img src="assets/images/deluxe-room.jpg" alt="Peaceful room at Takshasheela" loading="lazy"><div class="feature-card__body"><h3>Restorative stays</h3><p>Quiet rooms and a supportive daily rhythm designed to help the nervous system settle.</p><a class="text-link" href="stay.php">Explore your stay</a></div></article>
+            <?php foreach (packages() as $slug => $program): ?>
+                <article class="feature-card" data-reveal><a href="program.php?slug=<?= e($slug) ?>"><img src="<?= e($program['image']) ?>" alt="<?= e($program['alt']) ?>" loading="lazy"></a><div class="feature-card__body"><p class="eyebrow"><?= e($program['category']) ?></p><h3><a class="card-title-link" href="program.php?slug=<?= e($slug) ?>"><?= e($program['name']) ?></a></h3><p><?= e($program['short']) ?></p><a class="text-link" href="program.php?slug=<?= e($slug) ?>">View package details</a></div></article>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -56,13 +57,12 @@ render_header('Ayurvedic healing and restorative stays', 'Personalised Ayurvedic
 
 <section class="section section--cream">
     <div class="shell">
-        <div class="section-heading" data-reveal><p class="eyebrow">Guest reflections</p><h2>What our clients say about us.</h2></div>
+        <div class="home-products__heading" data-reveal><div><p class="eyebrow">Guest reflections</p><h2>What our clients say about us.</h2></div><div><p>Read how guests describe their experiences of rest, care, and renewal at Takshasheela.</p><a class="text-link" href="testimonials.php">Read all guest reflections</a></div></div>
         <div class="card-grid">
             <article class="testimonial-card"><p class="testimonial-card__rating" aria-label="Five out of five stars">★★★★★</p><h3>A Deep Sense of Calm</h3><blockquote>“The retreat felt like a true reset for my body and mind. Every treatment was thoughtful, grounding, and deeply restorative.”</blockquote><footer><span>AS</span><p><strong>Asha Sharma</strong>Kathmandu, Nepal</p></footer></article>
             <article class="testimonial-card"><p class="testimonial-card__rating" aria-label="Five out of five stars">★★★★★</p><h3>Warmth and Healing</h3><blockquote>“I came seeking peace and left with clarity, balance, and a renewed sense of connection to myself and nature.”</blockquote><footer><span>PK</span><p><strong>Pooja K.C.</strong>Pokhara, Nepal</p></footer></article>
             <article class="testimonial-card"><p class="testimonial-card__rating" aria-label="Five out of five stars">★★★★★</p><h3>A Beautiful Retreat Experience</h3><blockquote>“The atmosphere was serene, the care was genuine, and every moment felt aligned with healing and self-discovery.”</blockquote><footer><span>RB</span><p><strong>Rina Bhandari</strong>Lalitpur, Nepal</p></footer></article>
         </div>
-        <p class="section-link"><a class="text-link" href="testimonials.php">Read all guest reflections</a></p>
     </div>
 </section>
 
@@ -72,7 +72,7 @@ render_header('Ayurvedic healing and restorative stays', 'Personalised Ayurvedic
 
 <section class="section section--cream">
     <div class="shell">
-        <div class="section-heading" data-reveal><p class="eyebrow">Blogs</p><h2>Staying inspired &amp; connected.</h2></div>
+        <div class="home-products__heading" data-reveal><div><p class="eyebrow">Blogs</p><h2>Staying inspired &amp; connected.</h2></div><div><p>Ideas, reflections, and practical wisdom for a more conscious approach to everyday wellbeing.</p><a class="text-link" href="journal.php">Explore all blogs</a></div></div>
         <div class="card-grid">
             <article class="feature-card"><img src="assets/images/journal-one.png" alt="A reflective Takshasheela healing retreat" loading="lazy"><div class="feature-card__body"><h3>What Actually Happens on a Takshasheela Healing Retreat</h3><p>Making room to reconnect with yourself during a time of major change.</p><a class="text-link" href="journal.php">Read more</a></div></article>
             <article class="feature-card"><img src="assets/images/journal-two.png" alt="A parent taking restorative time" loading="lazy"><div class="feature-card__body"><h3>Why Every Parent Deserves Seven Days of Me Time</h3><p>A restorative pause for people whose care for others rarely stops.</p><a class="text-link" href="journal.php#articles">Read more</a></div></article>
@@ -82,7 +82,7 @@ render_header('Ayurvedic healing and restorative stays', 'Personalised Ayurvedic
 </section>
 <section class="section">
     <div class="shell">
-        <div class="section-heading" data-reveal><p class="eyebrow">News &amp; Events</p><h2>What is unfolding at Takshasheela.</h2><p class="lede">Retreat dates, community gatherings, and seasonal moments from the Aashram.</p></div>
+        <div class="home-products__heading" data-reveal><div><p class="eyebrow">News &amp; Events</p><h2>What is unfolding at Takshasheela.</h2></div><div><p>Retreat dates, community gatherings, and seasonal moments from the Aashram.</p><a class="text-link" href="news.php">View all news &amp; events</a></div></div>
         <div class="card-grid">
             <article class="feature-card" data-reveal><img src="assets/images/therapy.jpg" alt="Ayurvedic healing program" loading="lazy"><div class="feature-card__body"><p class="eyebrow">Healing program</p><h3>Panchakarma &amp; Detox Programs</h3><p>Deep cleansing and rejuvenation therapies designed to restore balance, vitality, and inner calm.</p><a class="text-link" href="therapies.php#panchakarma">Learn more</a></div></article>
             <article class="feature-card" data-reveal><img src="assets/images/mindfulness.jpg" alt="Community wellness gathering" loading="lazy"><div class="feature-card__body"><p class="eyebrow">Community</p><h3>Meditation Circles &amp; Wellness Gatherings</h3><p>Join mindful conversations, breathing practices, and peaceful gatherings that help you reconnect with yourself.</p><a class="text-link" href="contact.php">Join the circle</a></div></article>

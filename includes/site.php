@@ -35,8 +35,8 @@ function render_header(string $title, string $description, string $theme = 'ligh
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/site.css?v=1">
-    <script src="assets/js/site.js?v=1" defer></script>
+    <link rel="stylesheet" href="assets/css/site.css?v=5">
+    <script src="assets/js/site.js?v=2" defer></script>
 </head>
 <body class="site-theme-<?= e($theme) ?>">
 <a class="skip-link" href="#main-content">Skip to content</a>
@@ -65,7 +65,7 @@ function render_header(string $title, string $description, string $theme = 'ligh
                 </li>
                 <li class="nav-group nav-group--wide">
                     <details>
-                        <summary<?= nav_active(['programs.php', 'therapies.php']) ? ' class="is-active"' : '' ?>>Wellness Programs</summary>
+                        <summary<?= nav_active(['programs.php', 'program.php', 'therapies.php', 'service.php', 'trainings.php', 'training.php']) ? ' class="is-active"' : '' ?>>Wellness Programs</summary>
                         <div class="nav-panel nav-panel--wellness">
                             <p class="nav-panel__label">Choose a wellness path</p>
                             <details class="nav-subgroup">
@@ -74,15 +74,15 @@ function render_header(string $title, string $description, string $theme = 'ligh
                                     <a href="programs.php"><strong>All Packages</strong><span>Compare every retreat package</span></a>
                                     <details class="nav-item-group">
                                         <summary>Panchakarma Rejuvenation</summary>
-                                        <div class="nav-item-list"><a href="programs.php#panchakarma">Package overview</a><a href="programs.php#panchakarma-highlights">Program highlights</a><a href="contact.php?interest=Panchakarma%20Rejuvenation">Enquire about this package</a></div>
+                                        <div class="nav-item-list"><a href="program.php?slug=panchakarma-rejuvenation">Package details</a><a href="programs.php#panchakarma-highlights">Program highlights</a><a href="contact.php?interest=Panchakarma%20Rejuvenation">Enquire about this package</a></div>
                                     </details>
                                     <details class="nav-item-group">
                                         <summary>Ayurvedic Wellness Immersion</summary>
-                                        <div class="nav-item-list"><a href="programs.php#immersion">Package overview</a><a href="programs.php#immersion-highlights">Program highlights</a><a href="contact.php?interest=Ayurvedic%20Wellness%20Immersion">Enquire about this package</a></div>
+                                        <div class="nav-item-list"><a href="program.php?slug=ayurvedic-wellness-immersion">Package details</a><a href="programs.php#immersion-highlights">Program highlights</a><a href="contact.php?interest=Ayurvedic%20Wellness%20Immersion">Enquire about this package</a></div>
                                     </details>
                                     <details class="nav-item-group">
                                         <summary>Mind–Body Balance Retreat</summary>
-                                        <div class="nav-item-list"><a href="programs.php#mind-body">Package overview</a><a href="programs.php#mind-body-highlights">Program highlights</a><a href="contact.php?interest=Mind-Body%20Balance%20Retreat">Enquire about this package</a></div>
+                                        <div class="nav-item-list"><a href="program.php?slug=mind-body-balance-retreat">Package details</a><a href="programs.php#mind-body-highlights">Program highlights</a><a href="contact.php?interest=Mind-Body%20Balance%20Retreat">Enquire about this package</a></div>
                                     </details>
                                 </div>
                             </details>
@@ -92,22 +92,40 @@ function render_header(string $title, string $description, string $theme = 'ligh
                                     <a href="therapies.php"><strong>All Services</strong><span>Explore every healing service</span></a>
                                     <details class="nav-item-group">
                                         <summary>Panchakarma &amp; Detox Therapy</summary>
-                                        <div class="nav-item-list"><a href="therapies.php#panchakarma">Service overview</a><a href="therapies.php#panchakarma-highlights">Therapy highlights</a><a href="contact.php?interest=Panchakarma%20and%20Detox%20Therapy">Enquire about this service</a></div>
+                                        <div class="nav-item-list"><a href="service.php?slug=panchakarma-detox-therapy">Service details</a><a href="therapies.php#panchakarma-highlights">Therapy highlights</a><a href="contact.php?interest=Panchakarma%20and%20Detox%20Therapy">Enquire about this service</a></div>
                                     </details>
                                     <details class="nav-item-group">
                                         <summary>Ayurvedic Wellness Retreats</summary>
-                                        <div class="nav-item-list"><a href="therapies.php#wellness">Service overview</a><a href="therapies.php#wellness-highlights">Retreat highlights</a><a href="contact.php?interest=Ayurvedic%20Wellness%20Retreat">Enquire about this service</a></div>
+                                        <div class="nav-item-list"><a href="service.php?slug=ayurvedic-wellness-retreats">Service details</a><a href="therapies.php#wellness-highlights">Retreat highlights</a><a href="contact.php?interest=Ayurvedic%20Wellness%20Retreat">Enquire about this service</a></div>
                                     </details>
                                     <details class="nav-item-group">
                                         <summary>Personalized Healing Programs</summary>
-                                        <div class="nav-item-list"><a href="therapies.php#personalised">Service overview</a><a href="therapies.php#personalised-highlights">Program highlights</a><a href="contact.php?interest=Personalized%20Healing%20Program">Enquire about this service</a></div>
+                                        <div class="nav-item-list"><a href="service.php?slug=personalized-healing-programs">Service details</a><a href="therapies.php#personalised-highlights">Program highlights</a><a href="contact.php?interest=Personalized%20Healing%20Program">Enquire about this service</a></div>
+                                    </details>
+                                </div>
+                            </details>
+                            <details class="nav-subgroup">
+                                <summary><span><strong>Training</strong><small>Experiential learning programs</small></span></summary>
+                                <div class="nav-submenu">
+                                    <a href="trainings.php"><strong>All Training</strong><span>Explore every learning program</span></a>
+                                    <details class="nav-item-group">
+                                        <summary>Ayurveda Foundations Training</summary>
+                                        <div class="nav-item-list"><a href="training.php?slug=ayurveda-foundations">Training details</a><a href="trainings.php#ayurveda-foundations-highlights">Course highlights</a><a href="contact.php?interest=Ayurveda%20Foundations%20Training">Enquire about this training</a></div>
+                                    </details>
+                                    <details class="nav-item-group">
+                                        <summary>Ayurvedic Lifestyle &amp; Nutrition</summary>
+                                        <div class="nav-item-list"><a href="training.php?slug=ayurvedic-lifestyle-nutrition">Training details</a><a href="trainings.php#lifestyle-nutrition-highlights">Course highlights</a><a href="contact.php?interest=Ayurvedic%20Lifestyle%20%26%20Nutrition">Enquire about this training</a></div>
+                                    </details>
+                                    <details class="nav-item-group">
+                                        <summary>Mindfulness &amp; Yoga Facilitation</summary>
+                                        <div class="nav-item-list"><a href="training.php?slug=mindfulness-yoga-facilitation">Training details</a><a href="trainings.php#mindfulness-yoga-highlights">Course highlights</a><a href="contact.php?interest=Mindfulness%20%26%20Yoga%20Facilitation">Enquire about this training</a></div>
                                     </details>
                                 </div>
                             </details>
                         </div>
                     </details>
                 </li>
-                <li><a href="stay.php"<?= $current === 'stay.php' ? ' aria-current="page"' : '' ?>>Accommodations</a></li>
+                <li><a href="stay.php"<?= nav_active(['stay.php', 'accommodation.php']) ? ' aria-current="page"' : '' ?>>Accommodations</a></li>
                 <li><a href="products.php"<?= nav_active(['products.php', 'product.php']) ? ' aria-current="page"' : '' ?>>Products</a></li>
                 <li class="nav-group">
                     <details>
@@ -151,6 +169,7 @@ function render_footer(): void
             <p class="footer-title">Visit</p>
             <a href="programs.php">Wellness programs</a>
             <a href="therapies.php">Therapies</a>
+            <a href="trainings.php">Training</a>
             <a href="stay.php">Accommodation</a>
             <a href="products.php">Ayurvedic products</a>
             <a href="contact.php">Contact us</a>
@@ -185,13 +204,26 @@ function render_hero(string $eyebrow, string $title, string $description, string
     <?php
 }
 
-function render_cta(string $eyebrow, string $title, string $copy = 'Tell us what you need. We will help you choose a thoughtful next step.'): void
+function render_cta(string $eyebrow, string $title, string $copy = 'Tell us what you need. We will help you choose a thoughtful next step.', string $href = 'contact.php'): void
 {
     ?>
 <section class="cta-band">
     <div class="shell cta-band__inner" data-reveal>
         <div><p class="eyebrow eyebrow--light"><?= e($eyebrow) ?></p><h2><?= e($title) ?></h2><p><?= e($copy) ?></p></div>
-        <a class="button button--cream" href="contact.php">Start a conversation</a>
+        <a class="button button--cream" href="<?= e($href) ?>">Start a conversation</a>
+    </div>
+</section>
+    <?php
+}
+
+function render_wellness_video(): void
+{
+    ?>
+<section class="section section--ink video-section">
+    <div class="shell">
+        <div class="video-embed" data-reveal>
+            <iframe src="https://www.youtube-nocookie.com/embed/v7AYKMP6rOE?rel=0" title="Yoga for Complete Beginners — 20 minute practice" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
     </div>
 </section>
     <?php

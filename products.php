@@ -17,4 +17,4 @@ render_hero('The Takshasheela apothecary', 'Everyday rituals, rooted in Ayurveda
         </div>
     </div>
 </section>
-<?php render_cta('Need a recommendation?', 'Let us help you choose a ritual suited to your needs.'); render_footer(); ?>
+<?php render_cta('Need a recommendation?', 'Let us help you choose a ritual suited to your needs.', 'Ask about ingredients, use, availability, or ordering.', 'contact.php?type=product'); render_footer(); ?>

@@ -97,3 +97,20 @@ document.querySelectorAll('[data-lightbox]').forEach((button) => {
 document.querySelector('[data-dialog-close]')?.addEventListener('click', () => {
   document.querySelector('#gallery-dialog')?.close();
 });
+
+const enquiryType = document.querySelector('[data-enquiry-type]');
+const enquiryInterest = document.querySelector('[data-enquiry-interest]');
+
+if (enquiryType && enquiryInterest) {
+  enquiryInterest.addEventListener('change', () => {
+    const selected = enquiryInterest.selectedOptions[0];
+    if (selected?.dataset.enquiryOptionType) enquiryType.value = selected.dataset.enquiryOptionType;
+  });
+
+  enquiryType.addEventListener('change', () => {
+    const selected = enquiryInterest.selectedOptions[0];
+    if (selected?.dataset.enquiryOptionType && selected.dataset.enquiryOptionType !== enquiryType.value) {
+      enquiryInterest.value = '';
+    }
+  });
+}
