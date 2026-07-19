@@ -26,6 +26,22 @@ render_header($training['name'], $training['short'], 'detail');
             <a class="button" href="contact.php?interest=<?= rawurlencode($training['name']) ?>">Enquire about this training</a>
             <div class="offering-facts">
                 <details open><summary>What is included</summary><ul><?php foreach ($training['includes'] as $item): ?><li><?= e($item) ?></li><?php endforeach; ?></ul></details>
+                <?php if (!empty($training['itinerary'])): ?>
+                <details>
+                    <summary>Itinerary</summary>
+                    <ol class="itinerary-list">
+                        <?php foreach ($training['itinerary'] as $stop): ?>
+                        <li>
+                            <span><?= e($stop['time']) ?></span>
+                            <div>
+                                <strong><?= e($stop['title']) ?></strong>
+                                <p><?= e($stop['description']) ?></p>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ol>
+                </details>
+                <?php endif; ?>
                 <details><summary>Who it may suit</summary><p><?= e($training['ideal_for']) ?></p></details>
                 <details><summary>Learning format</summary><p><?= e($training['format']) ?></p></details>
             </div>

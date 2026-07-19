@@ -26,6 +26,22 @@ render_header($program['name'], $program['short'], 'detail');
             <a class="button" href="contact.php?interest=<?= rawurlencode($program['name']) ?>">Enquire about this package</a>
             <div class="offering-facts">
                 <details open><summary>What is included</summary><ul><?php foreach ($program['includes'] as $item): ?><li><?= e($item) ?></li><?php endforeach; ?></ul></details>
+                <?php if (!empty($program['itinerary'])): ?>
+                <details>
+                    <summary>Itinerary</summary>
+                    <ol class="itinerary-list">
+                        <?php foreach ($program['itinerary'] as $stop): ?>
+                        <li>
+                            <span><?= e($stop['time']) ?></span>
+                            <div>
+                                <strong><?= e($stop['title']) ?></strong>
+                                <p><?= e($stop['description']) ?></p>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ol>
+                </details>
+                <?php endif; ?>
                 <details><summary>Who it may suit</summary><p><?= e($program['ideal_for']) ?></p></details>
                 <details><summary>Your daily rhythm</summary><p><?= e($program['rhythm']) ?></p></details>
             </div>

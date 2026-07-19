@@ -25,6 +25,22 @@ render_header($service['name'], $service['short'], 'detail');
             <a class="button" href="contact.php?interest=<?= rawurlencode($service['interest']) ?>">Enquire about this service</a>
             <div class="offering-facts">
                 <details open><summary>What care may include</summary><ul><?php foreach ($service['includes'] as $item): ?><li><?= e($item) ?></li><?php endforeach; ?></ul></details>
+                <?php if (!empty($service['itinerary'])): ?>
+                <details>
+                    <summary>Itinerary</summary>
+                    <ol class="itinerary-list">
+                        <?php foreach ($service['itinerary'] as $stop): ?>
+                        <li>
+                            <span><?= e($stop['time']) ?></span>
+                            <div>
+                                <strong><?= e($stop['title']) ?></strong>
+                                <p><?= e($stop['description']) ?></p>
+                            </div>
+                        </li>
+                        <?php endforeach; ?>
+                    </ol>
+                </details>
+                <?php endif; ?>
                 <details><summary>Who it may suit</summary><p><?= e($service['ideal_for']) ?></p></details>
                 <details><summary>How it begins</summary><p><?= e($service['process']) ?></p></details>
             </div>
