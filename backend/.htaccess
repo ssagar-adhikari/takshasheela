@@ -1,0 +1,9 @@
+# The Laravel application must be served from public/. If this directory is
+# nested below the frontend document root, deny access to private app files.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule !^public(?:/|$) - [F,L]
+</IfModule>
+<IfModule !mod_rewrite.c>
+    Require all denied
+</IfModule>

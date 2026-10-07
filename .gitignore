@@ -1,0 +1,6 @@
+/backend/.env
+/backend/vendor/
+/backend/node_modules/
+/backend/database/*.sqlite*
+/backend/.phpunit.result.cache
+/backend/.phpunit.cache/

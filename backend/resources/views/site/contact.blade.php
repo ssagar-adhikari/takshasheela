@@ -1,0 +1,25 @@
+@extends('layouts.site')
+@section('title', 'Contact')
+@section('description', 'Contact '.$siteSettings['site_name'].' to plan a stay, compare programs, enquire about products, or ask a question.')
+@section('content')
+@include('site.partials.hero', ['eyebrow' => 'Begin a conversation', 'heading' => 'Tell us what support would feel useful.', 'copy' => 'Choose the kind of enquiry and, if you know it, the specific program, room, or product. We will route your message to the right team.', 'variant' => 'hero--contact'])
+<section class="section"><div class="shell contact-grid">
+<div class="contact-form" data-reveal><p class="eyebrow">Your enquiry</p><h2>How can we help?</h2>
+@if(session('status'))<div class="notice" role="status">{{ session('status') }}</div>@endif
+@if($errors->any())<div class="notice" role="alert">{{ $errors->first() }}</div>@endif
+<form method="post" action="{{ route('contact.store') }}">@csrf<div class="sr-only" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div><div class="form-grid"><div class="field"><label for="name">Full name</label><input id="name" name="name" value="{{ old('name') }}" autocomplete="name" required></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" required></div><div class="field"><label for="phone">Phone <span>(optional)</span></label><input id="phone" name="phone" value="{{ old('phone') }}" autocomplete="tel"></div><div class="field"><label for="enquiry_type">Enquiry type</label><select id="enquiry_type" name="enquiry_type" data-enquiry-type required><option value="">Choose a type</option>@foreach($typeLabels as $value => $label)<option value="{{ $value }}" @selected(old('enquiry_type', $type) === $value)>{{ $label }}</option>@endforeach</select></div><div class="field field--full"><label for="interest">Specific program, room, or product <span>(optional)</span></label><select id="interest" name="interest" data-enquiry-interest><option value="">Not sure yet</option>@foreach($interestGroups as $groupType => $group)<optgroup label="{{ $group['label'] }}">@foreach($group['options'] as $option)<option value="{{ $option }}" data-enquiry-option-type="{{ $groupType }}" @selected(old('interest', $interest) === $option)>{{ $option }}</option>@endforeach</optgroup>@endforeach</select></div><div class="field field--full"><label for="message">What would you like support with?</label><textarea id="message" name="message" required>{{ old('message') }}</textarea></div><div class="field field--full consent-field"><label><input type="checkbox" name="consent" value="1" @checked(old('consent')) required> I agree that {{ $siteSettings['site_name'] }} may use these details to respond to my enquiry.</label></div><div class="field field--full"><button class="button" type="submit">Send enquiry</button></div></div></form>
+</div>
+<aside class="contact-aside" data-reveal><p class="eyebrow">Contact details</p><h2>We are here to listen.</h2><p>{{ $siteSettings['business_description'] ?: 'Your enquiry type helps us send your message to the right person.' }}</p><ul class="contact-list">
+<li><span>Email</span><a href="mailto:{{ $siteSettings['contact_email'] }}">{{ $siteSettings['contact_email'] }}</a></li>
+@if($siteSettings['contact_phone'])<li><span>Phone</span><a href="tel:{{ preg_replace('/[^+0-9]/', '', $siteSettings['contact_phone']) }}">{{ $siteSettings['contact_phone'] }}</a></li>@endif
+@if($siteSettings['alternate_phone'])<li><span>Alternate phone</span><a href="tel:{{ preg_replace('/[^+0-9]/', '', $siteSettings['alternate_phone']) }}">{{ $siteSettings['alternate_phone'] }}</a></li>@endif
+@if($siteSettings['whatsapp_phone'])<li><span>WhatsApp</span><a href="https://wa.me/{{ preg_replace('/\D+/', '', $siteSettings['whatsapp_phone']) }}" target="_blank" rel="noopener noreferrer">{{ $siteSettings['whatsapp_phone'] }}</a></li>@endif
+@if($siteSettings['address'] || $siteSettings['city'] || $siteSettings['country'])<li><span>Location</span><p class="contact-address">@include('site.partials.business-address')</p></li>@endif
+@if($siteSettings['business_hours'])<li><span>Business hours</span><p class="business-hours">{!! nl2br(e($siteSettings['business_hours'])) !!}</p></li>@endif
+@if($siteSettings['response_time'])<li><span>Response time</span>{{ $siteSettings['response_time'] }}</li>@endif
+@if($siteSettings['registration_number'])<li><span>Registration number</span>{{ $siteSettings['registration_number'] }}</li>@endif
+</ul>
+@include('site.partials.social-links', ['class' => 'contact-socials'])
+</aside></div></section>
+@if($siteSettings['map_embed_url'])<section class="section section--cream location-section"><div class="shell"><div class="location-map" data-reveal><iframe title="Map showing {{ $siteSettings['site_name'] }} location" src="{{ $siteSettings['map_embed_url'] }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div></div></section>@endif
+@endsection

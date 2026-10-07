@@ -1,0 +1,9 @@
+@extends('layouts.site')
+@section('title', 'Accommodations')
+@section('description', 'Explore comfortable, peaceful rooms designed to support rest and rejuvenation during your Takshasheela stay.')
+@section('content')
+@include('site.partials.hero', ['eyebrow' => 'Accommodations', 'heading' => 'Stay in comfort and tranquillity.', 'copy' => 'Explore thoughtfully designed accommodations created to provide comfort, tranquillity, and a restful connection with the aashram environment.', 'variant' => 'hero--stay'])
+<section class="section"><div class="shell intro-grid" data-reveal><div><p class="eyebrow">Our Rooms &amp; Suites</p><h2>Discover Your Perfect Stay</h2></div><div class="intro-copy"><p>Each room is thoughtfully arranged to support rest, comfort, and renewal throughout your retreat experience.</p></div></div></section>
+@forelse($accommodations as $room)<section class="section {{ $loop->index % 2 === 0 ? 'section--cream' : '' }}"><div class="shell split {{ $loop->index % 2 !== 0 ? 'split--reverse' : '' }}"><div class="split__media split__media--landscape" data-reveal><img src="{{ $room->imageUrl() }}" alt="{{ $room->image_alt }}" loading="lazy"></div><div class="split__content" data-reveal><p class="eyebrow">{{ $room->name }}</p><h2>{{ $room->heading }}</h2><p>{{ $room->short_description }}</p><ul class="feature-list">@foreach($room->highlights as $highlight)<li>{{ $highlight }}</li>@endforeach</ul><a class="text-link" href="{{ route('accommodations.show', $room->slug) }}">View accommodation details</a></div></div></section>@empty<section class="section"><div class="shell"><p>No accommodations are published yet.</p></div></section>@endforelse
+@include('site.partials.cta', ['eyebrow' => 'Plan your stay', 'heading' => 'Ask about room availability, retreat dates, and room features.', 'copy' => 'Tell us your dates, room preference, and any practical needs.', 'href' => route('contact', ['type' => 'accommodation'])])
+@endsection

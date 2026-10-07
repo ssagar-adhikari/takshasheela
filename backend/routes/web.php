@@ -1,0 +1,105 @@
+<?php
+
+use App\Http\Controllers\AboutSectionController;
+use App\Http\Controllers\AccommodationController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ChronicleController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\GalleryItemController;
+use App\Http\Controllers\HomeSectionController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicSiteController;
+use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\WellnessCategoryController;
+use App\Http\Controllers\WellnessController;
+use App\Http\Controllers\WellnessOfferingController;
+use App\Http\Controllers\WellnessSubcategoryController;
+use Illuminate\Support\Facades\Route;
+
+Route::get('/', [PublicSiteController::class, 'home'])->name('home');
+Route::get('/about', [PublicSiteController::class, 'about'])->defaults('section', 'about-takshasheela')->name('about');
+Route::get('/ayurveda', [PublicSiteController::class, 'about'])->defaults('section', 'about-ayurveda')->name('ayurveda');
+Route::get('/team', [PublicSiteController::class, 'about'])->defaults('section', 'our-team')->name('team');
+Route::get('/approach', [PublicSiteController::class, 'about'])->defaults('section', 'our-approach')->name('approach');
+
+Route::get('/programs', [WellnessController::class, 'index'])->defaults('categorySlug', 'programs')->name('programs.index');
+Route::get('/programs/{offeringSlug}', [WellnessController::class, 'show'])->defaults('categorySlug', 'programs')->name('programs.show');
+Route::get('/therapies', [WellnessController::class, 'index'])->defaults('categorySlug', 'therapies')->name('therapies.index');
+Route::get('/therapies/{offeringSlug}', [WellnessController::class, 'show'])->defaults('categorySlug', 'therapies')->name('therapies.show');
+Route::get('/trainings', [WellnessController::class, 'index'])->defaults('categorySlug', 'trainings')->name('trainings.index');
+Route::get('/trainings/{offeringSlug}', [WellnessController::class, 'show'])->defaults('categorySlug', 'trainings')->name('trainings.show');
+Route::get('/wellness/{categorySlug}', [WellnessController::class, 'index'])->name('wellness.categories.show');
+Route::get('/wellness/{categorySlug}/{offeringSlug}', [WellnessController::class, 'show'])->name('wellness.offerings.show');
+
+Route::get('/accommodations', [PublicSiteController::class, 'accommodations'])->name('accommodations.index');
+Route::get('/accommodations/{slug}', [PublicSiteController::class, 'accommodation'])->name('accommodations.show');
+Route::get('/products', [PublicSiteController::class, 'products'])->name('products.index');
+Route::get('/products/{slug}', [PublicSiteController::class, 'product'])->name('products.show');
+Route::get('/blogs', [PublicSiteController::class, 'blogs'])->name('blogs.index');
+Route::get('/news', [PublicSiteController::class, 'news'])->name('news.index');
+Route::get('/chronicles/{slug}', [PublicSiteController::class, 'chronicle'])->name('chronicles.show');
+Route::get('/testimonials', [PublicSiteController::class, 'testimonials'])->name('testimonials');
+Route::get('/gallery', [PublicSiteController::class, 'gallery'])->name('gallery');
+Route::get('/contact', [PublicSiteController::class, 'contact'])->name('contact');
+Route::post('/contact', [PublicSiteController::class, 'submitContact'])->middleware('throttle:5,1')->name('contact.store');
+Route::get('/privacy', [PublicSiteController::class, 'privacy'])->name('privacy');
+
+Route::redirect('/index.php', '/');
+Route::redirect('/about.php', '/about');
+Route::redirect('/ayurveda.php', '/ayurveda');
+Route::redirect('/team.php', '/team');
+Route::redirect('/approach.php', '/approach');
+Route::redirect('/programs.php', '/programs');
+Route::redirect('/therapies.php', '/therapies');
+Route::redirect('/trainings.php', '/trainings');
+Route::redirect('/stay.php', '/accommodations');
+Route::redirect('/products.php', '/products');
+Route::redirect('/journal.php', '/blogs');
+Route::redirect('/news.php', '/news');
+Route::redirect('/testimonials.php', '/testimonials');
+Route::redirect('/gallery.php', '/gallery');
+Route::redirect('/contact.php', '/contact');
+Route::redirect('/privacy.php', '/privacy');
+Route::get('/program.php', [PublicSiteController::class, 'legacyDetail'])->defaults('resource', 'programs');
+Route::get('/service.php', [PublicSiteController::class, 'legacyDetail'])->defaults('resource', 'therapies');
+Route::get('/training.php', [PublicSiteController::class, 'legacyDetail'])->defaults('resource', 'trainings');
+Route::get('/accommodation.php', [PublicSiteController::class, 'legacyDetail'])->defaults('resource', 'accommodations');
+Route::get('/product.php', [PublicSiteController::class, 'legacyDetail'])->defaults('resource', 'products');
+Route::get('/chronicle.php', [PublicSiteController::class, 'legacyDetail'])->defaults('resource', 'chronicles');
+
+Route::middleware('guest')->group(function () {
+    Route::view('/login', 'auth.login')->name('login');
+    Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:10,1')->name('login.store');
+    Route::view('/forgot-password', 'auth.forgot-password')->name('password.request');
+    Route::post('/forgot-password', [AuthController::class, 'sendResetLink'])->middleware('throttle:5,1')->name('password.email');
+    Route::get('/reset-password/{token}', fn (string $token) => view('auth.reset-password', compact('token')))->name('password.reset');
+    Route::post('/reset-password', [AuthController::class, 'resetPassword'])->middleware('throttle:5,1')->name('password.update');
+});
+Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
+Route::middleware(['auth', 'auth.session', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', DashboardController::class)->name('dashboard');
+    Route::get('/homepage', [HomeSectionController::class, 'edit'])->name('home.edit');
+    Route::put('/homepage', [HomeSectionController::class, 'update'])->name('home.update');
+    Route::resource('accommodations', AccommodationController::class)->except('show');
+    Route::resource('wellness-categories', WellnessCategoryController::class)->except('show');
+    Route::resource('wellness-subcategories', WellnessSubcategoryController::class)->except('show');
+    Route::resource('wellness-offerings', WellnessOfferingController::class)->except('show');
+    Route::resource('products', ProductController::class)->except('show');
+    Route::resource('chronicles', ChronicleController::class)->except('show');
+    Route::resource('testimonials', TestimonialController::class)->except('show');
+    Route::resource('gallery', GalleryItemController::class)->except('show');
+    Route::get('/about-us/{section}', [AboutSectionController::class, 'edit'])->whereIn('section', array_keys(config('about.sections')))->name('about.edit');
+    Route::put('/about-us/{section}', [AboutSectionController::class, 'update'])->whereIn('section', array_keys(config('about.sections')))->name('about.update');
+    Route::get('/enquiries', [EnquiryController::class, 'index'])->name('enquiries.index');
+    Route::get('/enquiries/{enquiry}', [EnquiryController::class, 'show'])->name('enquiries.show');
+    Route::patch('/enquiries/{enquiry}/status', [EnquiryController::class, 'updateStatus'])->name('enquiries.status');
+    Route::post('/enquiries/{enquiry}/resend', [EnquiryController::class, 'resend'])->name('enquiries.resend');
+    Route::delete('/enquiries/{enquiry}', [EnquiryController::class, 'destroy'])->name('enquiries.destroy');
+    Route::get('/settings', [SettingsController::class, 'edit'])->name('settings.edit');
+    Route::put('/settings', [SettingsController::class, 'update'])->name('settings.update');
+    Route::view('/profile', 'admin.profile')->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+});

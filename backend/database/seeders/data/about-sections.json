@@ -1,0 +1,226 @@
+{
+    "about-takshasheela": {
+        "meta_title": "About us",
+        "meta_description": "Learn about Takshasheela Ayurveda Aashram, our values, healing philosophy, and commitment to authentic wellbeing.",
+        "hero_eyebrow": "About Takshasheela",
+        "hero_title": "Worldwide, life-changing personal growth and self-development processes.",
+        "hero_description": "Takshasheela brings psychological and spiritual work together to support deep and lasting transformation.",
+        "hero_image": "assets/images/about-hero.png",
+        "hero_image_alt": "Worldwide, life-changing personal growth and self-development processes.",
+        "cta_eyebrow": "Come as you are",
+        "cta_title": "Takshasheela invites you to join our community and welcomes the contribution your difference makes.",
+        "cta_body": "Tell us what you need. We will help you choose a thoughtful next step.",
+        "blocks": {
+            "block-1": {
+                "kind": "split",
+                "eyebrow": "Shifting global consciousness",
+                "title": "Inclusivity",
+                "body": "Takshasheela aims to contribute to a significant shift in global consciousness through actively pursuing our commitment to foster global appreciation of our diversity as humans.\n\nNo matter the age of your body, your physical characteristics, your ethnicity, your indigeneity, what religion or spiritual path you follow, gender you identify as, your sexual orientation, political beliefs you hold, cultural or socioeconomic background you originate from, whether you identify with any of these or none of them, or anything else which makes you the unique and beautiful human being that you are, Takshasheela invites you to join our community and welcomes the contribution your difference makes.",
+                "image": "assets/images/inclusivity.jpg",
+                "image_alt": "Inclusivity at Takshasheela"
+            },
+            "block-2": {
+                "kind": "split",
+                "eyebrow": "Rafia Morgan and Turiya Hanover",
+                "title": "Turiya and Rafia, Founders of Takshasheela",
+                "body": "Rafia Morgan and Turiya Hanover, over the last 40 years, have been trained in a multitude of therapeutic modalities. For a great part of that time they also received personal guidance and life-training from an enlightened master, which has given them a deep understanding and great sensitivity to the powerful, yet subtle inter-relatedness of psychological issues and the realisation of our true spiritual nature.\n\nIn their experience, only when we bring psychological and spiritual work together is true transformation possible. This synthesis truly enhances deep and lasting growth. With this approach we discover that every emotional and psychological issue is actually a potential doorway to grounded and embodied awakening.",
+                "image": "assets/images/founders.jpg",
+                "image_alt": "Rafia Morgan and Turiya Hanover laughing on a bench"
+            }
+        }
+    },
+    "about-ayurveda": {
+        "meta_title": "About Ayurveda",
+        "meta_description": "Explore the timeless principles of Ayurveda and how they support balance, prevention, healing, and long-term wellbeing.",
+        "hero_eyebrow": "Ancient wisdom for modern life",
+        "hero_title": "Discover the timeless healing wisdom of Ayurveda at Takshasheela.",
+        "hero_description": "A time-tested healing science focused on restoring balance between body, mind, and spirit.",
+        "hero_image": "assets/images/water-hero.png",
+        "hero_image_alt": "Discover the timeless healing wisdom of Ayurveda at Takshasheela.",
+        "cta_eyebrow": "Curious about Ayurveda?",
+        "cta_title": "Speak with our team about how personalised Ayurvedic care may support you.",
+        "cta_body": "Tell us what you need. We will help you choose a thoughtful next step.",
+        "blocks": {
+            "block-1": {
+                "kind": "split",
+                "eyebrow": "Ancient wisdom for modern life",
+                "title": "What is Ayurveda?",
+                "body": "Ayurveda is a time-tested healing science from India that focuses on restoring balance between the body, mind, and spirit. At Takshasheela Ayurveda Aashram, we use this sacred knowledge to guide guests towards natural harmony, vitality, and inner peace.\n\nThrough personalised care, nourishing food, herbal support, mindful movement, and restorative therapies, Ayurveda helps create lasting wellbeing rather than temporary relief.",
+                "image": "assets/images/inclusivity.jpg",
+                "image_alt": "A calm natural setting for Ayurvedic care"
+            },
+            "block-2": {
+                "kind": "heading",
+                "eyebrow": "The three doshas",
+                "title": "Three energies shape our individual nature.",
+                "body": "Ayurveda describes Vata, Pitta, and Kapha as patterns formed by the five elements. Everyone carries all three in a unique proportion.",
+                "image": null,
+                "image_alt": ""
+            },
+            "block-3": {
+                "kind": "card",
+                "eyebrow": "Air + Space",
+                "title": "Vata",
+                "body": "Vata represents movement, creativity, and adaptability. When balanced, it supports lightness and clear expression; steady routines, warmth, and rest help calm its changeable qualities.",
+                "image": "assets/images/dosha-vata.webp",
+                "image_alt": "Airy grasses and flowing fabric representing Vata dosha"
+            },
+            "block-4": {
+                "kind": "card",
+                "eyebrow": "Fire + Water",
+                "title": "Pitta",
+                "body": "Pitta represents transformation, digestion, focus, and discernment. When balanced, it supports clarity and purpose; cooling foods, moderation, and spaciousness soften its intensity.",
+                "image": "assets/images/dosha-pitta.webp",
+                "image_alt": "Warm copper, water, and botanicals representing Pitta dosha"
+            },
+            "block-5": {
+                "kind": "card",
+                "eyebrow": "Earth + Water",
+                "title": "Kapha",
+                "body": "Kapha represents structure, nourishment, steadiness, and endurance. When balanced, it brings calm and resilience; movement, variety, and lightness help enliven its grounded nature.",
+                "image": "assets/images/dosha-kapha.webp",
+                "image_alt": "Earth, water, stones, and green leaves representing Kapha dosha"
+            }
+        }
+    },
+    "our-team": {
+        "meta_title": "Our team",
+        "meta_description": "Meet the compassionate Ayurvedic practitioners and wellness professionals guiding guests at Takshasheela.",
+        "hero_eyebrow": "Our leadership and guiding team",
+        "hero_title": "Compassionate leaders shaping a healing journey.",
+        "hero_description": "Rooted in service, humility, and warmth, our team creates a safe and nurturing environment for healing and personal growth.",
+        "hero_image": "assets/images/founders.jpg",
+        "hero_image_alt": "Compassionate leaders shaping a healing journey.",
+        "cta_eyebrow": "Meet us in person",
+        "cta_title": "Connect with the people who will guide your time at Takshasheela.",
+        "cta_body": "Tell us what you need. We will help you choose a thoughtful next step.",
+        "blocks": {
+            "block-1": {
+                "kind": "heading",
+                "eyebrow": "Our leadership",
+                "title": "Compassionate leaders shaping a healing journey.",
+                "body": "At Takshasheela Ayurveda Aashram, our team combines deep spiritual insight with hands-on expertise in Ayurveda, counselling, wellness facilitation, and compassionate care.\n\nOur leaders are rooted in Nepali values of service, humility, and warmth. They create a safe and nurturing environment where guests can reconnect with themselves through healing practices, retreat experiences, and meaningful personal growth.",
+                "image": null,
+                "image_alt": ""
+            },
+            "block-2": {
+                "kind": "heading",
+                "eyebrow": "Meet the team",
+                "title": "Our Nepalese leadership team.",
+                "body": "",
+                "image": null,
+                "image_alt": ""
+            },
+            "block-3": {
+                "kind": "person",
+                "eyebrow": "",
+                "title": "Anita Gurung",
+                "body": "A compassionate wellness guide and spiritual counsellor committed to supporting personal healing and growth.",
+                "image": "assets/images/anita.webp",
+                "image_alt": "Anita Gurung"
+            },
+            "block-4": {
+                "kind": "person",
+                "eyebrow": "",
+                "title": "Bina Adhikari",
+                "body": "Bina has long supported healing circles and wellness programs with warmth, wisdom, and deep compassion.",
+                "image": "assets/images/bina.jpg",
+                "image_alt": "Bina Adhikari"
+            },
+            "block-5": {
+                "kind": "person",
+                "eyebrow": "",
+                "title": "Sangita Tamang",
+                "body": "Sangita brings calm presence and deep insight to healing journeys, guided reflection, and wellness practice.",
+                "image": "assets/images/sangita.jpg",
+                "image_alt": "Sangita Tamang"
+            },
+            "block-6": {
+                "kind": "person",
+                "eyebrow": "",
+                "title": "Sushma Shrestha",
+                "body": "Wellness Program Director guiding retreats, Ayurvedic consultations, and compassionate guest care.",
+                "image": "assets/images/anita.webp",
+                "image_alt": "Sushma Shrestha"
+            },
+            "block-7": {
+                "kind": "person",
+                "eyebrow": "",
+                "title": "Bikash Karki",
+                "body": "Ayurveda therapist and retreat facilitator focused on healing, balance, and personal renewal.",
+                "image": "assets/images/bina.jpg",
+                "image_alt": "Bikash Karki"
+            },
+            "block-8": {
+                "kind": "person",
+                "eyebrow": "",
+                "title": "Pramila Thapa",
+                "body": "Community care and guest relations lead creating a welcoming and supportive atmosphere.",
+                "image": "assets/images/sangita.jpg",
+                "image_alt": "Pramila Thapa"
+            }
+        }
+    },
+    "our-approach": {
+        "meta_title": "Our approach",
+        "meta_description": "Understand Takshasheela’s personalised, nature-led approach to Ayurvedic healing and sustainable wellbeing.",
+        "hero_eyebrow": "Our approach",
+        "hero_title": "Guided by balance, nature, and thoughtful care.",
+        "hero_description": "We blend the wisdom of Ayurveda, compassionate care, and restorative living to create a healing journey that is personal, grounded, and deeply calming.",
+        "hero_image": "assets/images/therapy.jpg",
+        "hero_image_alt": "Guided by balance, nature, and thoughtful care.",
+        "cta_eyebrow": "Find your starting point",
+        "cta_title": "Our team can help you choose a thoughtful next step.",
+        "cta_body": "Tell us what you need. We will help you choose a thoughtful next step.",
+        "blocks": {
+            "block-1": {
+                "kind": "heading",
+                "eyebrow": "A healing philosophy",
+                "title": "Restoring harmony between body, mind, and spirit.",
+                "body": "At Takshasheela Ayurveda Aashram, our approach is centered on restoring harmony through personalized therapies, nourishing food, and a peaceful environment.",
+                "image": null,
+                "image_alt": ""
+            },
+            "block-2": {
+                "kind": "principle",
+                "eyebrow": "",
+                "title": "Holistic Healing",
+                "body": "We focus on the whole person rather than isolated symptoms, helping guests regain strength, clarity, and inner balance.",
+                "image": null,
+                "image_alt": ""
+            },
+            "block-3": {
+                "kind": "principle",
+                "eyebrow": "",
+                "title": "Personalized Care",
+                "body": "Every treatment plan is shaped around the individual’s needs, comfort, and wellness goals for a more meaningful experience.",
+                "image": null,
+                "image_alt": ""
+            },
+            "block-4": {
+                "kind": "principle",
+                "eyebrow": "",
+                "title": "Nature-Centered Living",
+                "body": "Our serene surroundings, mindful routines, and restorative atmosphere support healing in a calm and grounding way.",
+                "image": null,
+                "image_alt": ""
+            },
+            "block-5": {
+                "kind": "text",
+                "eyebrow": "What guides our care",
+                "title": "Personalised support in a peaceful environment.",
+                "body": "Individual Ayurvedic consultation and care planning, therapeutic treatments, nourishing meals, mindful movement, and restorative routines all work together.\n\nCompassionate guidance from experienced wellness practitioners helps every guest feel held throughout the process.",
+                "image": null,
+                "image_alt": ""
+            },
+            "block-6": {
+                "kind": "text",
+                "eyebrow": "What guests experience",
+                "title": "A slower rhythm for genuine renewal.",
+                "body": "Guests experience a calm and welcoming atmosphere, space for rest, reflection, and renewal, and practices that support long-term wellbeing.\n\nThe aim is a deeper connection with self, nature, and inner balance.",
+                "image": null,
+                "image_alt": ""
+            }
+        }
+    }
+}

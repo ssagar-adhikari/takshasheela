@@ -1,6 +1,7 @@
 <?php
 require __DIR__ . '/includes/site.php';
 require __DIR__ . '/includes/wellness.php';
+require __DIR__ . '/includes/chronicles.php';
 render_header('Ayurvedic healing and restorative stays', 'Personalised Ayurvedic programs, therapies, and peaceful accommodation in Kathmandu.', 'dark');
 ?>
 <section class="home-hero">
@@ -49,7 +50,7 @@ render_header('Ayurvedic healing and restorative stays', 'Personalised Ayurvedic
         <?php require_once __DIR__ . '/includes/products.php'; ?>
         <div class="product-grid product-grid--home">
             <?php $homeProducts = array_slice(products(), 0, 3, true); foreach ($homeProducts as $slug => $product): ?>
-                <article class="product-card" data-reveal><a class="product-card__image" href="product.php?slug=<?= e($slug) ?>"><img src="<?= e($product['image']) ?>" alt="<?= e($product['name']) ?>" loading="lazy"></a><div class="product-card__body"><p class="product-card__meta"><?= e($product['category']) ?> · <?= e($product['size']) ?></p><h3><a href="product.php?slug=<?= e($slug) ?>"><?= e($product['name']) ?></a></h3><p><?= e($product['short']) ?></p><div class="product-card__footer"><strong><?= e($product['price']) ?></strong><a class="text-link" href="product.php?slug=<?= e($slug) ?>">View product</a></div></div></article>
+                <article class="product-card" data-reveal><a class="product-card__image" href="product.php?slug=<?= e($slug) ?>"><img src="<?= e($product['image']) ?>" alt="<?= e($product['alt']) ?>" loading="lazy"></a><div class="product-card__body"><p class="product-card__meta"><?= e($product['category']) ?> · <?= e($product['size']) ?></p><h3><a href="product.php?slug=<?= e($slug) ?>"><?= e($product['name']) ?></a></h3><p><?= e($product['short']) ?></p><div class="product-card__footer"><strong><?= e($product['price']) ?></strong><a class="text-link" href="product.php?slug=<?= e($slug) ?>">View product</a></div></div></article>
             <?php endforeach; ?>
         </div>
     </div>
@@ -59,9 +60,9 @@ render_header('Ayurvedic healing and restorative stays', 'Personalised Ayurvedic
     <div class="shell">
         <div class="home-products__heading" data-reveal><div><p class="eyebrow">Guest reflections</p><h2>What our clients say about us.</h2></div><div><p>Read how guests describe their experiences of rest, care, and renewal at Takshasheela.</p><a class="text-link" href="testimonials.php">Read all guest reflections</a></div></div>
         <div class="card-grid">
-            <article class="testimonial-card"><p class="testimonial-card__rating" aria-label="Five out of five stars">★★★★★</p><h3>A Deep Sense of Calm</h3><blockquote>“The retreat felt like a true reset for my body and mind. Every treatment was thoughtful, grounding, and deeply restorative.”</blockquote><footer><span>AS</span><p><strong>Asha Sharma</strong>Kathmandu, Nepal</p></footer></article>
-            <article class="testimonial-card"><p class="testimonial-card__rating" aria-label="Five out of five stars">★★★★★</p><h3>Warmth and Healing</h3><blockquote>“I came seeking peace and left with clarity, balance, and a renewed sense of connection to myself and nature.”</blockquote><footer><span>PK</span><p><strong>Pooja K.C.</strong>Pokhara, Nepal</p></footer></article>
-            <article class="testimonial-card"><p class="testimonial-card__rating" aria-label="Five out of five stars">★★★★★</p><h3>A Beautiful Retreat Experience</h3><blockquote>“The atmosphere was serene, the care was genuine, and every moment felt aligned with healing and self-discovery.”</blockquote><footer><span>RB</span><p><strong>Rina Bhandari</strong>Lalitpur, Nepal</p></footer></article>
+            <?php foreach (array_slice(chronicle_testimonials(), 0, 3) as $testimonial): ?>
+            <article class="testimonial-card"><p class="testimonial-card__rating" aria-label="<?= e((string) $testimonial['rating']) ?> out of five stars"><?= str_repeat('★', $testimonial['rating']) ?></p><h3><?= e($testimonial['title']) ?></h3><blockquote>“<?= e($testimonial['quote']) ?>”</blockquote><footer><span><?= e($testimonial['initials']) ?></span><p><strong><?= e($testimonial['guest_name']) ?></strong><?= e($testimonial['guest_location'] ?? '') ?></p></footer></article>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -74,9 +75,9 @@ render_header('Ayurvedic healing and restorative stays', 'Personalised Ayurvedic
     <div class="shell">
         <div class="home-products__heading" data-reveal><div><p class="eyebrow">Blogs</p><h2>Staying inspired &amp; connected.</h2></div><div><p>Ideas, reflections, and practical wisdom for a more conscious approach to everyday wellbeing.</p><a class="text-link" href="journal.php">Explore all blogs</a></div></div>
         <div class="card-grid">
-            <article class="feature-card"><img src="assets/images/journal-one.png" alt="A reflective Takshasheela healing retreat" loading="lazy"><div class="feature-card__body"><h3>What Actually Happens on a Takshasheela Healing Retreat</h3><p>Making room to reconnect with yourself during a time of major change.</p><a class="text-link" href="journal.php">Read more</a></div></article>
-            <article class="feature-card"><img src="assets/images/journal-two.png" alt="A parent taking restorative time" loading="lazy"><div class="feature-card__body"><h3>Why Every Parent Deserves Seven Days of Me Time</h3><p>A restorative pause for people whose care for others rarely stops.</p><a class="text-link" href="journal.php#articles">Read more</a></div></article>
-            <article class="feature-card"><img src="assets/images/journal-three.png" alt="A journey home to wholeness" loading="lazy"><div class="feature-card__body"><h3>The Magic of Healing – Coming Home to Wholeness</h3><p>Ines Schönenberg reflects on how her Takshasheela retreat enriched her life.</p><a class="text-link" href="journal.php#articles">Read more</a></div></article>
+            <?php foreach (array_slice(chronicle_articles('blog'), 0, 3, true) as $slug => $article): ?>
+            <article class="feature-card"><a href="chronicle.php?slug=<?= e($slug) ?>"><img src="<?= e($article['image']) ?>" alt="<?= e($article['alt']) ?>" loading="lazy"></a><div class="feature-card__body"><h3><a class="card-title-link" href="chronicle.php?slug=<?= e($slug) ?>"><?= e($article['title']) ?></a></h3><p><?= e($article['excerpt']) ?></p><a class="text-link" href="chronicle.php?slug=<?= e($slug) ?>">Read more</a></div></article>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -84,9 +85,9 @@ render_header('Ayurvedic healing and restorative stays', 'Personalised Ayurvedic
     <div class="shell">
         <div class="home-products__heading" data-reveal><div><p class="eyebrow">News &amp; Events</p><h2>What is unfolding at Takshasheela.</h2></div><div><p>Retreat dates, community gatherings, and seasonal moments from the Aashram.</p><a class="text-link" href="news.php">View all news &amp; events</a></div></div>
         <div class="card-grid">
-            <article class="feature-card" data-reveal><img src="assets/images/therapy.jpg" alt="Ayurvedic healing program" loading="lazy"><div class="feature-card__body"><p class="eyebrow">Healing program</p><h3>Panchakarma &amp; Detox Programs</h3><p>Deep cleansing and rejuvenation therapies designed to restore balance, vitality, and inner calm.</p><a class="text-link" href="therapies.php#panchakarma">Learn more</a></div></article>
-            <article class="feature-card" data-reveal><img src="assets/images/mindfulness.jpg" alt="Community wellness gathering" loading="lazy"><div class="feature-card__body"><p class="eyebrow">Community</p><h3>Meditation Circles &amp; Wellness Gatherings</h3><p>Join mindful conversations, breathing practices, and peaceful gatherings that help you reconnect with yourself.</p><a class="text-link" href="contact.php">Join the circle</a></div></article>
-            <article class="feature-card" data-reveal><img src="assets/images/journal-three.png" alt="Seasonal celebration at Takshasheela" loading="lazy"><div class="feature-card__body"><p class="eyebrow">Seasonal</p><h3>Seasonal &amp; Spiritual Gatherings</h3><p>Meaningful moments of reflection, ritual, and connection with the Aashram community.</p><a class="text-link" href="news.php">Discover more</a></div></article>
+            <?php foreach (array_slice(chronicle_articles('news'), 0, 3, true) as $slug => $article): ?>
+            <article class="feature-card" data-reveal><a href="chronicle.php?slug=<?= e($slug) ?>"><img src="<?= e($article['image']) ?>" alt="<?= e($article['alt']) ?>" loading="lazy"></a><div class="feature-card__body"><p class="eyebrow"><?= e($article['category']) ?></p><h3><a class="card-title-link" href="chronicle.php?slug=<?= e($slug) ?>"><?= e($article['title']) ?></a></h3><p><?= e($article['excerpt']) ?></p><a class="text-link" href="chronicle.php?slug=<?= e($slug) ?>">Read more</a></div></article>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>

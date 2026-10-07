@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Abhyanga Body Oil",
+        "slug": "abhyanga-body-oil",
+        "category": "Body care",
+        "size": "200 ml",
+        "price": "NPR 1,850",
+        "image": "assets/images/product-abhyanga-oil.png",
+        "image_alt": "Bottle of Abhyanga Body Oil",
+        "short_description": "A warming daily massage oil to nourish skin and support a grounded routine.",
+        "description": "A slow infusion of sesame oil and traditional Ayurvedic botanicals created for the daily practice of self-massage. Its warming character helps soften the skin while turning an everyday ritual into a quiet moment of care.",
+        "ingredients": ["Sesame oil", "Ashwagandha", "Bala", "Manjistha"],
+        "usage": "Warm a small amount between the palms. Massage over the body with long strokes on the limbs and circular movements at the joints. Leave for 15–20 minutes before bathing.",
+        "is_published": true,
+        "sort_order": 10
+    },
+    {
+        "name": "Tulsi Calm Tea",
+        "slug": "tulsi-calm-tea",
+        "category": "Herbal teas",
+        "size": "60 g",
+        "price": "NPR 950",
+        "image": "assets/images/product-tulsi-tea.png",
+        "image_alt": "Package of Tulsi Calm Tea",
+        "short_description": "A fragrant caffeine-free infusion for unhurried afternoons and restful evenings.",
+        "description": "A gentle blend led by tulsi, the much-loved Ayurvedic herb traditionally used to support resilience and clarity. Balanced with warming spices, it makes a comforting cup at any time of day.",
+        "ingredients": ["Tulsi leaf", "Cinnamon", "Green cardamom", "Fennel seed"],
+        "usage": "Steep one teaspoon in freshly boiled water for 5–7 minutes. Strain and enjoy without milk, or add a little honey once the tea has cooled slightly.",
+        "is_published": true,
+        "sort_order": 20
+    },
+    {
+        "name": "Amla Chyawanprash",
+        "slug": "amla-chyawanprash",
+        "category": "Daily wellness",
+        "size": "300 g",
+        "price": "NPR 2,250",
+        "image": "assets/images/product-chyawanprash.png",
+        "image_alt": "Jar of Amla Chyawanprash",
+        "short_description": "A traditional herbal preserve made with amla and aromatic restorative spices.",
+        "description": "A rich, slow-cooked herbal preparation centred on amla. This traditional preserve brings together fruit, ghee, honey, and spices in a deeply aromatic daily tonic inspired by classical Ayurvedic practice.",
+        "ingredients": ["Amla fruit", "Raw honey", "Cultured ghee", "Long pepper"],
+        "usage": "Enjoy one teaspoon in the morning, followed by warm water or milk. If you are pregnant, taking medication, or managing a health condition, consult your practitioner first.",
+        "is_published": true,
+        "sort_order": 30
+    },
+    {
+        "name": "Shanti Night Serum",
+        "slug": "shanti-night-serum",
+        "category": "Face care",
+        "size": "30 ml",
+        "price": "NPR 1,650",
+        "image": "assets/images/product-night-serum.png",
+        "image_alt": "Bottle of Shanti Night Serum",
+        "short_description": "A silky botanical face oil designed for a calming end-of-day ritual.",
+        "description": "A lightweight evening blend that cushions the skin with botanical oils and a subtle herbaceous aroma. A few drops invite slower breathing, gentle facial massage, and a softer transition into rest.",
+        "ingredients": ["Jojoba oil", "Rosehip seed oil", "Brahmi", "Vetiver"],
+        "usage": "After cleansing, press 2–3 drops onto slightly damp face and neck. Massage gently with upward movements. Use in the evening and avoid the immediate eye area.",
+        "is_published": true,
+        "sort_order": 40
+    }
+]

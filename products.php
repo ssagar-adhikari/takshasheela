@@ -10,7 +10,7 @@ render_hero('The Takshasheela apothecary', 'Everyday rituals, rooted in Ayurveda
         <div class="product-grid">
             <?php foreach (products() as $slug => $product): ?>
                 <article class="product-card" data-reveal>
-                    <a class="product-card__image" href="product.php?slug=<?= e($slug) ?>"><img src="<?= e($product['image']) ?>" alt="<?= e($product['name']) ?>" loading="lazy"></a>
+                    <a class="product-card__image" href="product.php?slug=<?= e($slug) ?>"><img src="<?= e($product['image']) ?>" alt="<?= e($product['alt']) ?>" loading="lazy"></a>
                     <div class="product-card__body"><p class="product-card__meta"><?= e($product['category']) ?> · <?= e($product['size']) ?></p><h3><a href="product.php?slug=<?= e($slug) ?>"><?= e($product['name']) ?></a></h3><p><?= e($product['short']) ?></p><div class="product-card__footer"><strong><?= e($product['price']) ?></strong><a class="text-link" href="product.php?slug=<?= e($slug) ?>">View product</a></div></div>
                 </article>
             <?php endforeach; ?>

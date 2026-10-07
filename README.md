@@ -1,27 +1,32 @@
-# Takshasheela — New Website
+# Takshasheela Laravel website and CMS
 
-This directory is a standalone rebuild of the Takshasheela website. It does not load the legacy Drupal or Bootstrap theme files.
+The complete public website and administrator CMS now run from the Laravel 13 application in [`backend/`](backend/README.md). Public pages read published About, Accommodation, Product, Blog, News, Testimonial, and Gallery content directly from the CMS database.
 
 ## Run locally
 
 ```bash
-php -S 127.0.0.1:8780 -t takshasheela-new
+cd backend
+php artisan serve --host=127.0.0.1 --port=8088
 ```
 
-Then open `http://127.0.0.1:8780/`.
+Open **http://127.0.0.1:8088/** for the public website. Administrator login is at **http://127.0.0.1:8088/login**, and the dashboard is `/admin`.
+
+Create another administrator when needed:
+
+```bash
+php artisan cms:create-admin your-email@example.com --name="Your Name"
+```
 
 ## Structure
 
-- `includes/site.php` — shared document shell, navigation, footer, hero, and CTA components
-- `assets/css/site.css` — design tokens, components, and responsive behavior
-- `assets/js/site.js` — mobile navigation, dropdown behavior, scroll state, video accessibility, and gallery dialog
-- `assets/images/` — curated local imagery copied for this standalone build
-- root PHP files — public pages
+- `backend/resources/views/site/` — public Blade pages.
+- `backend/resources/views/layouts/site.blade.php` — shared navigation and footer.
+- `backend/app/Http/Controllers/PublicSiteController.php` — database-backed public pages and contact form.
+- `backend/app/Http/Controllers/WellnessController.php` — package, therapy, and training pages.
+- `backend/public/assets/` — public CSS, JavaScript, images, and video.
+- `backend/storage/app/public/` — CMS-uploaded images exposed through `backend/public/storage`.
+- `backend/resources/views/admin/` — CMS screens.
 
-## Design rules
+The former root PHP frontend remains in the repository as migration history. Laravel redirects its `.php` URLs to the current clean routes, including `/accommodations/{slug}`, `/products/{slug}`, and `/chronicles/{slug}`. Configure the web server document root as `backend/public`.
 
-- Newsreader is used for editorial headings and DM Sans for interface/body text.
-- Every page uses the same shell, spacing scale, color palette, and responsive breakpoints.
-- Page templates contain no inline or embedded CSS.
-- The homepage hero uses the original Takshasheela video with a still-image fallback and reduced-motion handling.
-- The original site content and information architecture are retained in the rebuilt page system.
+See the [Laravel setup and usage guide](backend/README.md) for fresh installation, database seeding, mail configuration, testing, and production hosting.

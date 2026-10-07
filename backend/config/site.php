@@ -1,0 +1,31 @@
+<?php
+
+return [
+    'defaults' => [
+        'site_name' => 'Takshasheela Ayurveda Aashram',
+        'legal_name' => 'Takshasheela Ayurveda Aashram',
+        'tagline' => 'Nature heals — we guide',
+        'business_description' => 'Personalised Ayurvedic care, restorative stays, and nature-led wellbeing in Kathmandu.',
+        'default_meta_description' => 'Personalised Ayurvedic care, restorative stays, and nature-led wellbeing in Kathmandu.',
+        'logo_path' => '',
+        'logo_alt' => 'Takshasheela Ayurveda Aashram',
+        'contact_email' => 'info@takshasheela.com',
+        'enquiry_email' => '',
+        'contact_phone' => '',
+        'alternate_phone' => '',
+        'whatsapp_phone' => '',
+        'address' => 'Kathmandu, Nepal',
+        'city' => 'Kathmandu',
+        'postal_code' => '',
+        'country' => 'Nepal',
+        'business_hours' => '',
+        'response_time' => 'Usually within two working days',
+        'map_embed_url' => 'https://www.openstreetmap.org/export/embed.html?bbox=85.2740%2C27.6740%2C85.3740%2C27.7540&layer=mapnik',
+        'map_directions_url' => 'https://www.openstreetmap.org/search?query=Kathmandu%2C%20Nepal',
+        'registration_number' => '',
+        'facebook_url' => '',
+        'instagram_url' => '',
+        'youtube_url' => '',
+        'linkedin_url' => '',
+    ],
+];

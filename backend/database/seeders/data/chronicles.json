@@ -1,0 +1,155 @@
+{
+    "articles": [
+        {
+            "type": "blog",
+            "title": "What Actually Happens on a Takshasheela Healing Retreat",
+            "slug": "what-happens-on-a-takshasheela-healing-retreat",
+            "category": "Takshasheela",
+            "excerpt": "Making room to reconnect with yourself during a time of major change.",
+            "body": "No matter where you stand or which continent you live on, we are living through a time of major changes. In moments of uncertainty, a healing retreat creates room to reconnect with what matters.\n\nAt Takshasheela, a retreat begins with listening. Consultation, therapies, meals, movement, and rest are shaped around the person rather than imposed as a fixed schedule. The pace is unhurried so the body and mind have room to settle.\n\nThe experience is both practical and reflective: daily care supports the body while quiet time, nature, and compassionate guidance help guests notice what they want to carry home.",
+            "image": "assets/images/journal-one.png",
+            "image_alt": "A reflective Takshasheela healing retreat",
+            "published_at": null,
+            "is_featured": true,
+            "is_published": true,
+            "sort_order": 10
+        },
+        {
+            "type": "blog",
+            "title": "A Takshasheela Retreat: Why Every Parent Deserves Seven Days of Me Time",
+            "slug": "why-every-parent-deserves-seven-days-of-me-time",
+            "category": "Takshasheela",
+            "excerpt": "A restorative pause for people whose care for others rarely stops.",
+            "body": "If you are a parent, you already know the truth: there are no days off. Even when you are technically resting, part of your attention is often still caring, planning, and anticipating.\n\nA dedicated retreat offers a rare chance to receive care without organising it for everyone else. Gentle therapies, nourishing food, sleep, movement, and quiet can help a tired nervous system remember a steadier rhythm.\n\nSeven days will not remove every responsibility, but they can create enough space to hear your own needs again and return home with clearer boundaries and simple practices that support you.",
+            "image": "assets/images/journal-two.png",
+            "image_alt": "A parent taking restorative time",
+            "published_at": null,
+            "is_featured": false,
+            "is_published": true,
+            "sort_order": 20
+        },
+        {
+            "type": "blog",
+            "title": "The Magic of Healing – Coming Home to Wholeness",
+            "slug": "the-magic-of-healing-coming-home-to-wholeness",
+            "category": "Guest reflection",
+            "excerpt": "Ines Schönenberg reflects on how her Takshasheela retreat enriched her life.",
+            "body": "Healing can feel less like becoming someone new and more like returning to parts of ourselves that have been waiting for attention. A past participant, now a volunteer staff member, reflects on the quiet shifts that began during her stay.\n\nShe remembers the value of being met without hurry, of eating and resting with greater awareness, and of allowing daily therapies to become a form of listening. The experience did not offer a quick answer; it opened a more compassionate relationship with change.\n\nThat sense of wholeness continues through ordinary choices: pausing before reacting, tending to the body, and remembering that care can be both gentle and disciplined.",
+            "image": "assets/images/journal-three.png",
+            "image_alt": "A journey home to wholeness",
+            "published_at": null,
+            "is_featured": false,
+            "is_published": true,
+            "sort_order": 30
+        },
+        {
+            "type": "blog",
+            "title": "Vulnerability Is Not Fragility. It Is the Entrance",
+            "slug": "vulnerability-is-not-fragility",
+            "category": "Guest reflection",
+            "excerpt": "Reflections on allowing honest experience to become a doorway to healing.",
+            "body": "Vulnerability is often mistaken for weakness, yet honest healing begins when we stop pretending that nothing affects us. A retreat can provide the safety and time needed to meet difficult feelings with patience.\n\nThrough stillness, supportive conversation, movement, and body-based care, guests may begin to recognise vulnerability as useful information. It shows where protection has become exhausting and where new support is needed.\n\nThe entrance is not dramatic. It may be one truthful conversation, one full breath, or one decision to rest. From there, a more grounded kind of strength can grow.",
+            "image": "assets/images/mindfulness.jpg",
+            "image_alt": "A quiet moment of reflection",
+            "published_at": null,
+            "is_featured": false,
+            "is_published": true,
+            "sort_order": 40
+        },
+        {
+            "type": "news",
+            "title": "New Wellness Retreats & Healing Experiences",
+            "slug": "new-wellness-retreats-and-healing-experiences",
+            "category": "Featured update",
+            "excerpt": "Discover retreat journeys combining Ayurvedic therapies, guided movement, meditation, and restorative care.",
+            "body": "Takshasheela is welcoming new retreat journeys designed for guests who need a thoughtful pause and personalised support. Each experience begins with consultation and brings together Ayurvedic care, nourishing meals, gentle movement, meditation, nature, and rest.\n\nPrograms vary in focus and pace. Some support deep rejuvenation, while others offer an accessible introduction to daily Ayurvedic living. Our team helps each guest choose an approach that fits their needs and available time.\n\nContact us for current dates, room availability, and guidance on choosing the most suitable experience.",
+            "image": "assets/images/journal-one.png",
+            "image_alt": "Featured wellness retreat at Takshasheela",
+            "published_at": null,
+            "is_featured": true,
+            "is_published": true,
+            "sort_order": 10
+        },
+        {
+            "type": "news",
+            "title": "Panchakarma & Detox Programs",
+            "slug": "panchakarma-and-detox-programs",
+            "category": "Healing program",
+            "excerpt": "Deep cleansing and rejuvenation therapies designed to restore balance, vitality, and inner calm.",
+            "body": "Our Panchakarma and detox programs are guided by individual assessment and careful pacing. Therapies are selected according to constitution, current needs, strength, digestion, and the time available for preparation and recovery.\n\nA program may include oil therapies, steam, food guidance, rest, gentle movement, and daily practitioner support. The emphasis is on safe, coherent care rather than intensity.\n\nSpeak with our team before planning travel so we can discuss timing, suitability, accommodation, and any health considerations.",
+            "image": "assets/images/therapy.jpg",
+            "image_alt": "Ayurvedic healing program",
+            "published_at": null,
+            "is_featured": false,
+            "is_published": true,
+            "sort_order": 20
+        },
+        {
+            "type": "news",
+            "title": "Meditation Circles & Wellness Gatherings",
+            "slug": "meditation-circles-and-wellness-gatherings",
+            "category": "Community",
+            "excerpt": "Mindful conversations, breathing practices, and peaceful gatherings that support reconnection.",
+            "body": "Our community gatherings create a welcoming space for meditation, breath awareness, reflective conversation, and simple wellbeing practices. Sessions are designed to be accessible to newcomers as well as regular practitioners.\n\nEach gathering has its own rhythm and may respond to the season, a shared theme, or the needs of the group. The intention remains the same: to slow down, listen, and reconnect in good company.\n\nContact us for the next gathering date and any practical details.",
+            "image": "assets/images/mindfulness.jpg",
+            "image_alt": "Community wellness gathering",
+            "published_at": null,
+            "is_featured": false,
+            "is_published": true,
+            "sort_order": 30
+        },
+        {
+            "type": "news",
+            "title": "Seasonal Celebrations & Spiritual Gatherings",
+            "slug": "seasonal-celebrations-and-spiritual-gatherings",
+            "category": "Seasonal",
+            "excerpt": "Meaningful moments of reflection, ritual, and connection with the Aashram community.",
+            "body": "Seasonal gatherings at Takshasheela honour moments of transition through reflection, shared practice, and community. They offer time to notice the changing natural rhythm and consider how it can guide daily life.\n\nDepending on the occasion, a gathering may include meditation, ritual, music, mindful conversation, or a shared meal. Guests are welcomed with clear guidance and no prior experience is required.\n\nUpcoming dates are shared through our news page and directly with community members.",
+            "image": "assets/images/journal-three.png",
+            "image_alt": "Seasonal celebration at Takshasheela",
+            "published_at": null,
+            "is_featured": false,
+            "is_published": true,
+            "sort_order": 40
+        }
+    ],
+    "testimonials": [
+        {
+            "title": "A Deep Sense of Calm",
+            "quote": "The retreat felt like a true reset for my body and mind. Every treatment was thoughtful, grounding, and deeply restorative.",
+            "guest_name": "Asha Sharma",
+            "guest_location": "Kathmandu, Nepal",
+            "rating": 5,
+            "is_published": true,
+            "sort_order": 10
+        },
+        {
+            "title": "Warmth and Healing",
+            "quote": "I came seeking peace and left with clarity, balance, and a renewed sense of connection to myself and nature.",
+            "guest_name": "Pooja K.C.",
+            "guest_location": "Pokhara, Nepal",
+            "rating": 5,
+            "is_published": true,
+            "sort_order": 20
+        },
+        {
+            "title": "A Beautiful Retreat Experience",
+            "quote": "The atmosphere was serene, the care was genuine, and every moment felt aligned with healing and self-discovery.",
+            "guest_name": "Rina Bhandari",
+            "guest_location": "Lalitpur, Nepal",
+            "rating": 5,
+            "is_published": true,
+            "sort_order": 30
+        }
+    ],
+    "gallery": [
+        {"image": "assets/images/welcome.png", "image_alt": "A peaceful wellness space at Takshasheela", "caption": "A peaceful space for rest", "is_published": true, "sort_order": 10},
+        {"image": "assets/images/therapy.jpg", "image_alt": "Ayurvedic therapy setting", "caption": "Ayurvedic care", "is_published": true, "sort_order": 20},
+        {"image": "assets/images/deluxe-room.jpg", "image_alt": "Deluxe accommodation", "caption": "Deluxe accommodation", "is_published": true, "sort_order": 30},
+        {"image": "assets/images/mindfulness.jpg", "image_alt": "Mindful restorative practice", "caption": "Mindful restorative practice", "is_published": true, "sort_order": 40},
+        {"image": "assets/images/founders.jpg", "image_alt": "Takshasheela community", "caption": "Our community", "is_published": true, "sort_order": 50},
+        {"image": "assets/images/emotional.jpg", "image_alt": "Herbal wellness preparation", "caption": "Herbal preparation", "is_published": true, "sort_order": 60},
+        {"image": "assets/images/standard-room.jpg", "image_alt": "Standard accommodation", "caption": "Standard accommodation", "is_published": true, "sort_order": 70},
+        {"image": "assets/images/inclusivity.jpg", "image_alt": "Welcoming community atmosphere", "caption": "A welcoming atmosphere", "is_published": true, "sort_order": 80}
+    ]
+}
