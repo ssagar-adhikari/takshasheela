@@ -35,7 +35,7 @@ function render_header(string $title, string $description, string $theme = 'ligh
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/site.css?v=5">
+    <link rel="stylesheet" href="assets/css/site.css?v=8">
     <script src="assets/js/site.js?v=2" defer></script>
 </head>
 <body class="site-theme-<?= e($theme) ?>">
