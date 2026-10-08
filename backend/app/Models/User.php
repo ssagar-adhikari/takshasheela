@@ -14,6 +14,8 @@ use Illuminate\Notifications\Notifiable;
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
+    protected $attributes = ['is_active' => true];
+
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
@@ -26,6 +28,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
+            'is_active' => 'boolean',
             'password' => 'hashed',
         ];
     }

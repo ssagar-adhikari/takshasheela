@@ -22,7 +22,7 @@ class AuthController extends Controller
         if (RateLimiter::tooManyAttempts($key, 5)) {
             throw ValidationException::withMessages(['email' => 'Too many attempts. Try again in '.RateLimiter::availableIn($key).' seconds.']);
         }
-        if (! Auth::attempt([...$credentials, 'role' => 'admin'], $request->boolean('remember'))) {
+        if (! Auth::attempt([...$credentials, 'role' => 'admin', 'is_active' => true], $request->boolean('remember'))) {
             RateLimiter::hit($key, 60);
             throw ValidationException::withMessages(['email' => 'These credentials do not match an administrator account.']);
         }
@@ -44,7 +44,7 @@ class AuthController extends Controller
     public function sendResetLink(Request $request)
     {
         $data = $request->validate(['email' => ['required', 'email', 'max:255']]);
-        Password::sendResetLink(['email' => Str::lower($data['email']), 'role' => 'admin']);
+        Password::sendResetLink(['email' => Str::lower($data['email']), 'role' => 'admin', 'is_active' => true]);
 
         return back()->with('status', 'If an administrator account exists for that email, a password reset link has been sent.');
     }
@@ -56,7 +56,7 @@ class AuthController extends Controller
             'password' => ['required', 'confirmed', PasswordRule::min(12)->letters()->numbers()],
         ]);
         $data['email'] = Str::lower($data['email']);
-        $status = Password::reset([...$data, 'role' => 'admin'], function (User $user, string $password) {
+        $status = Password::reset([...$data, 'role' => 'admin', 'is_active' => true], function (User $user, string $password) {
             $user->forceFill(['password' => $password, 'remember_token' => Str::random(60)])->save();
             event(new PasswordReset($user));
         });

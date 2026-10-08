@@ -189,8 +189,8 @@ class PublicSiteController extends Controller
         $slug = trim((string) $request->query('slug'));
 
         return $slug === ''
-            ? redirect()->route($routes[$resource][0])
-            : redirect()->route($routes[$resource][1], $slug);
+            ? redirect()->route($routes[$resource][0], [], 301)
+            : redirect()->route($routes[$resource][1], $slug, 301);
     }
 
     private function chronicleListing(string $type): View

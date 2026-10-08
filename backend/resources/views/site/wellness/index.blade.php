@@ -1,5 +1,5 @@
 @extends('layouts.site')
-@section('title', $category->hero_eyebrow)
+@section('title', $category->hero_eyebrow ?: $category->name)
 @section('description', $category->hero_description)
 @section('content')
 <section class="page-hero about-managed-hero">

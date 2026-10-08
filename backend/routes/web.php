@@ -11,13 +11,18 @@ use App\Http\Controllers\HomeSectionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicSiteController;
+use App\Http\Controllers\SeoController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WellnessCategoryController;
 use App\Http\Controllers\WellnessController;
 use App\Http\Controllers\WellnessOfferingController;
 use App\Http\Controllers\WellnessSubcategoryController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/sitemap.xml', [SeoController::class, 'sitemap'])->name('sitemap');
+Route::get('/robots.txt', [SeoController::class, 'robots'])->name('robots');
 
 Route::get('/', [PublicSiteController::class, 'home'])->name('home');
 Route::get('/about', [PublicSiteController::class, 'about'])->defaults('section', 'about-takshasheela')->name('about');
@@ -47,22 +52,22 @@ Route::get('/contact', [PublicSiteController::class, 'contact'])->name('contact'
 Route::post('/contact', [PublicSiteController::class, 'submitContact'])->middleware('throttle:5,1')->name('contact.store');
 Route::get('/privacy', [PublicSiteController::class, 'privacy'])->name('privacy');
 
-Route::redirect('/index.php', '/');
-Route::redirect('/about.php', '/about');
-Route::redirect('/ayurveda.php', '/ayurveda');
-Route::redirect('/team.php', '/team');
-Route::redirect('/approach.php', '/approach');
-Route::redirect('/programs.php', '/programs');
-Route::redirect('/therapies.php', '/therapies');
-Route::redirect('/trainings.php', '/trainings');
-Route::redirect('/stay.php', '/accommodations');
-Route::redirect('/products.php', '/products');
-Route::redirect('/journal.php', '/blogs');
-Route::redirect('/news.php', '/news');
-Route::redirect('/testimonials.php', '/testimonials');
-Route::redirect('/gallery.php', '/gallery');
-Route::redirect('/contact.php', '/contact');
-Route::redirect('/privacy.php', '/privacy');
+Route::permanentRedirect('/index.php', '/');
+Route::permanentRedirect('/about.php', '/about');
+Route::permanentRedirect('/ayurveda.php', '/ayurveda');
+Route::permanentRedirect('/team.php', '/team');
+Route::permanentRedirect('/approach.php', '/approach');
+Route::permanentRedirect('/programs.php', '/programs');
+Route::permanentRedirect('/therapies.php', '/therapies');
+Route::permanentRedirect('/trainings.php', '/trainings');
+Route::permanentRedirect('/stay.php', '/accommodations');
+Route::permanentRedirect('/products.php', '/products');
+Route::permanentRedirect('/journal.php', '/blogs');
+Route::permanentRedirect('/news.php', '/news');
+Route::permanentRedirect('/testimonials.php', '/testimonials');
+Route::permanentRedirect('/gallery.php', '/gallery');
+Route::permanentRedirect('/contact.php', '/contact');
+Route::permanentRedirect('/privacy.php', '/privacy');
 Route::get('/program.php', [PublicSiteController::class, 'legacyDetail'])->defaults('resource', 'programs');
 Route::get('/service.php', [PublicSiteController::class, 'legacyDetail'])->defaults('resource', 'therapies');
 Route::get('/training.php', [PublicSiteController::class, 'legacyDetail'])->defaults('resource', 'trainings');
@@ -80,6 +85,7 @@ Route::middleware('guest')->group(function () {
 });
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 Route::middleware(['auth', 'auth.session', 'admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('users', UserController::class)->except('show');
     Route::get('/', DashboardController::class)->name('dashboard');
     Route::get('/homepage', [HomeSectionController::class, 'edit'])->name('home.edit');
     Route::put('/homepage', [HomeSectionController::class, 'update'])->name('home.update');

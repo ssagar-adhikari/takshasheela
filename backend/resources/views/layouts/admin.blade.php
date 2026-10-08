@@ -5,7 +5,10 @@
 <meta name="csrf-token" content="{{ csrf_token() }}"><meta name="robots" content="noindex, nofollow">
 <title>@yield('title', 'Dashboard') · {{ $siteSettings['site_name'] }} CMS</title>
 <script>try{if(localStorage.getItem('takshasheela-sidebar-collapsed')==='true')document.documentElement.classList.add('sidebar-is-collapsed')}catch(error){}</script>
-<link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=17"><script src="{{ asset('js/admin.js') }}?v=7" defer></script>
+<link rel="stylesheet" href="{{ asset('vendor/quill/quill.snow.css') }}?v=2.0.3">
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}?v=19">
+<script src="{{ asset('vendor/quill/quill.js') }}?v=2.0.3" defer></script>
+<script src="{{ asset('js/admin.js') }}?v=8" defer></script>
 </head>
 <body class="admin-body">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -15,6 +18,7 @@
 <nav aria-label="Administration">
 <a href="{{ route('admin.dashboard') }}" title="Overview" @if(request()->routeIs('admin.dashboard')) aria-current="page" @endif><span class="nav-icon" aria-hidden="true">▦</span><span class="nav-text">Overview</span></a>
 <a href="{{ route('admin.home.edit') }}" title="Homepage" @if(request()->routeIs('admin.home.*')) aria-current="page" @endif><span class="nav-icon" aria-hidden="true">⌂</span><span class="nav-text">Homepage</span></a>
+<a href="{{ route('admin.users.index') }}" title="Users" @if(request()->routeIs('admin.users.*')) aria-current="page" @endif><span class="nav-icon" aria-hidden="true">♙</span><span class="nav-text">Users</span></a>
 <a href="{{ route('admin.enquiries.index') }}" title="Enquiries" @if(request()->routeIs('admin.enquiries.*')) aria-current="page" @endif><span class="nav-icon" aria-hidden="true">✉</span><span class="nav-text">Enquiries</span></a>
 <div class="nav-group">
 <button class="nav-group-toggle" type="button" aria-controls="about-menu-items" aria-expanded="{{ request()->routeIs('admin.about.*') ? 'true' : 'false' }}" data-nav-group-toggle><span class="nav-group-title">ABOUT US</span><span class="nav-group-chevron" aria-hidden="true">⌄</span></button>

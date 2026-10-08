@@ -160,71 +160,154 @@ function plainTextToRichHtml(value) {
     }).join('');
 }
 
-function initializeRichTextEditor(source) {
-    if (source.dataset.wysiwygReady === 'true') return;
-    source.dataset.wysiwygReady = 'true';
-    source.classList.add('wysiwyg-source');
+let richTextEditorId = 0;
 
+function initializeRichTextEditor(source) {
+    // Keep a usable textarea if the editor library could not be loaded.
+    if (source.dataset.wysiwygReady === 'true' || !window.Quill || source.disabled || source.readOnly) return;
+
+    const label = source.closest('label');
+    const name = label?.firstChild?.textContent?.trim() || 'Description';
+    const id = 'rich-text-' + (++richTextEditorId);
     const wrapper = document.createElement('div');
     wrapper.className = 'wysiwyg';
     const toolbar = document.createElement('div');
     toolbar.className = 'wysiwyg-toolbar';
     toolbar.setAttribute('role', 'toolbar');
-    toolbar.setAttribute('aria-label', 'Text formatting');
+    toolbar.setAttribute('aria-label', name + ' formatting');
     toolbar.innerHTML = `
-        <button type="button" data-rich-command="formatBlock" data-rich-value="p" title="Paragraph">P</button>
-        <button type="button" data-rich-command="formatBlock" data-rich-value="h3" title="Heading">H</button>
-        <button type="button" data-rich-command="bold" title="Bold"><strong>B</strong></button>
-        <button type="button" data-rich-command="italic" title="Italic"><em>I</em></button>
-        <button type="button" data-rich-command="insertUnorderedList" title="Bulleted list">• List</button>
-        <button type="button" data-rich-command="insertOrderedList" title="Numbered list">1. List</button>
-        <button type="button" data-rich-command="formatBlock" data-rich-value="blockquote" title="Quote">❝</button>
-        <button type="button" data-rich-command="removeFormat" title="Clear formatting">Clear</button>
-        <button type="button" data-rich-command="undo" title="Undo">↶</button>
-        <button type="button" data-rich-command="redo" title="Redo">↷</button>`;
+        <span class="ql-formats"><select class="ql-header" aria-label="Text style">
+            <option selected value="">Paragraph</option><option value="2">Heading 2</option>
+            <option value="3">Heading 3</option><option value="4">Heading 4</option>
+        </select></span>
+        <span class="ql-formats">
+            <button type="button" class="ql-bold" aria-label="Bold" title="Bold (Ctrl+B)"></button>
+            <button type="button" class="ql-italic" aria-label="Italic" title="Italic (Ctrl+I)"></button>
+        </span>
+        <span class="ql-formats">
+            <button type="button" class="ql-list" value="bullet" aria-label="Bulleted list" title="Bulleted list"></button>
+            <button type="button" class="ql-list" value="ordered" aria-label="Numbered list" title="Numbered list"></button>
+            <button type="button" class="ql-blockquote" aria-label="Quote" title="Quote"></button>
+        </span>
+        <span class="ql-formats">
+            <button type="button" class="ql-clean" aria-label="Clear formatting" title="Clear formatting"></button>
+            <button type="button" class="ql-undo" aria-label="Undo" title="Undo (Ctrl+Z)">↶</button>
+            <button type="button" class="ql-redo" aria-label="Redo" title="Redo (Ctrl+Shift+Z)">↷</button>
+        </span>`;
+    const container = document.createElement('div');
+    const feedback = document.createElement('p');
+    feedback.className = 'wysiwyg-feedback';
+    feedback.id = id + '-feedback';
+    feedback.setAttribute('role', 'alert');
+    feedback.hidden = true;
+    wrapper.append(toolbar, container, feedback);
 
-    const editor = document.createElement('div');
-    editor.className = 'wysiwyg-editor';
-    editor.contentEditable = 'true';
-    editor.setAttribute('role', 'textbox');
-    editor.setAttribute('aria-multiline', 'true');
-    editor.setAttribute('aria-label', source.closest('label')?.firstChild?.textContent?.trim() || 'Rich text editor');
-    editor.dataset.placeholder = source.getAttribute('placeholder') || 'Write content here…';
-    editor.innerHTML = /<[a-z][\s\S]*>/i.test(source.value)
-        ? sanitizeRichTextFragment(source.value)
-        : plainTextToRichHtml(source.value);
+    // An editor inside a <label> loses focus when the label activates its textarea.
+    // Keep the interactive editor outside the label and forward label clicks explicitly.
+    if (label) {
+        const field = document.createElement('div');
+        field.className = 'rich-text-field';
+        label.before(field);
+        field.append(label, wrapper);
+        label.querySelectorAll('small').forEach((hint) => field.append(hint));
+    } else {
+        source.after(wrapper);
+    }
 
-    wrapper.append(toolbar, editor);
-    source.after(wrapper);
+    let editor;
+    try {
+        editor = new Quill(container, {
+            theme: 'snow',
+            placeholder: source.placeholder || 'Start typing here…',
+            formats: ['header', 'bold', 'italic', 'list', 'blockquote'],
+            modules: {
+                toolbar: {
+                    container: toolbar,
+                    handlers: {
+                        undo() { this.quill.history.undo(); },
+                        redo() { this.quill.history.redo(); },
+                    },
+                },
+                history: { delay: 500, maxStack: 100, userOnly: true },
+            },
+        });
+        const html = /<[a-z][\s\S]*>/i.test(source.value)
+            ? sanitizeRichTextFragment(source.value)
+            : plainTextToRichHtml(source.value);
+        editor.setContents(editor.clipboard.convert({ html }), 'silent');
+        editor.history.clear();
+    } catch (error) {
+        wrapper.remove();
+        return;
+    }
 
-    const sync = () => {
-        const html = sanitizeRichTextFragment(editor.innerHTML).trim();
-        source.value = editor.textContent.trim() === '' ? '' : html;
-        source.setCustomValidity('');
+    source.dataset.wysiwygReady = 'true';
+    source.hidden = true;
+    source.classList.add('wysiwyg-source');
+    source.tabIndex = -1;
+    editor.root.id = id;
+    editor.root.setAttribute('role', 'textbox');
+    editor.root.setAttribute('aria-label', name);
+    editor.root.setAttribute('aria-multiline', 'true');
+    editor.root.setAttribute('aria-required', String(source.required));
+    editor.root.setAttribute('aria-describedby', feedback.id);
+    editor.root.setAttribute('spellcheck', 'true');
+    // Quill's generated picker replaces the native select; name its focus target too.
+    toolbar.querySelector('.ql-picker-label')?.setAttribute('aria-label', 'Text style');
+
+    const validate = (showError = false) => {
+        let message = '';
+        if (source.required && !editor.getText().trim()) message = 'Please enter ' + name.toLowerCase() + '.';
+        if (source.maxLength > 0 && Array.from(source.value).length > source.maxLength) {
+            message = 'This content is too long. Shorten it to fit the ' + source.maxLength.toLocaleString() + '-character limit (including formatting).';
+        }
+        source.setCustomValidity(message);
+        editor.root.setAttribute('aria-invalid', String(Boolean(message)));
+        if (showError || !feedback.hidden) {
+            feedback.textContent = message;
+            feedback.hidden = !message;
+        }
+        return !message;
     };
-
-    toolbar.addEventListener('mousedown', (event) => event.preventDefault());
-    toolbar.addEventListener('click', (event) => {
-        const button = event.target.closest('[data-rich-command]');
-        if (!button) return;
-        editor.focus();
-        document.execCommand(button.dataset.richCommand, false, button.dataset.richValue || null);
+    const sync = () => {
+        source.value = editor.getText().trim() === '' ? '' : sanitizeRichTextFragment(editor.getSemanticHTML()).trim();
+        validate();
+    };
+    editor.on('text-change', () => {
         sync();
+        source.dispatchEvent(new Event('input', { bubbles: true }));
     });
-    editor.addEventListener('input', sync);
-    editor.addEventListener('blur', sync);
-    editor.addEventListener('paste', (event) => {
+    editor.root.addEventListener('blur', sync);
+    label?.addEventListener('click', (event) => {
         event.preventDefault();
-        document.execCommand('insertText', false, event.clipboardData.getData('text/plain'));
+        editor.focus();
+    });
+    source.addEventListener('invalid', (event) => {
+        event.preventDefault();
+        validate(true);
+        if (!source.form || source.form.querySelector(':invalid') === source) editor.focus();
     });
     source.form?.addEventListener('submit', (event) => {
+        if (!source.isConnected) return;
         sync();
-        if (source.required && source.value === '') {
+        if (!validate(true)) {
             event.preventDefault();
-            source.setCustomValidity('Please enter this content.');
-            editor.focus();
+            if (source.form.querySelector(':invalid') === source) editor.focus();
         }
     });
+    source.form?.addEventListener('reset', () => {
+        if (!source.isConnected) return;
+        // The browser restores textarea defaults after dispatching the reset event.
+        setTimeout(() => {
+            const html = /<[a-z][\s\S]*>/i.test(source.value)
+                ? sanitizeRichTextFragment(source.value) : plainTextToRichHtml(source.value);
+            editor.setContents(editor.clipboard.convert({ html }), 'silent');
+            editor.history.clear();
+            feedback.hidden = true;
+            sync();
+        }, 0);
+    });
+    sync();
 }
 
 document.querySelectorAll('textarea[data-wysiwyg]').forEach(initializeRichTextEditor);

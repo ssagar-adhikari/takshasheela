@@ -10,7 +10,7 @@ class EnsureAdministrator
 {
     public function handle(Request $request, Closure $next): Response
     {
-        abort_unless($request->user()?->role === 'admin', 403, 'Administrator access is required.');
+        abort_unless($request->user()?->role === 'admin' && $request->user()->is_active, 403, 'An active administrator account is required.');
         $response = $next($request);
         $response->headers->set('Cache-Control', 'no-store, private');
 

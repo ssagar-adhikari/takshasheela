@@ -1,5 +1,5 @@
 @extends('layouts.site')
-@section('title', 'Ayurvedic healing and restorative stays')
+@section('title', 'Ayurveda Retreat in Kathmandu, Nepal')
 @section('description', $siteSettings['default_meta_description'])
 @section('theme', 'dark')
 @section('content')

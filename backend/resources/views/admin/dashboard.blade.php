@@ -5,7 +5,7 @@
     <div>
         <p class="eyebrow">YOUR WEBSITE, AT A GLANCE</p>
         <h1>Welcome back, {{ explode(' ', auth()->user()->name)[0] }}.</h1>
-        <p class="muted">Manage the homepage, enquiries, About Us content, wellness programs, accommodations, products, Chronicles, website settings, and your account.</p>
+        <p class="muted">Manage the homepage, enquiries, About Us content, wellness programs, accommodations, products, Chronicles, website settings, users, and your account.</p>
     </div>
     <a class="button" href="{{ route('admin.settings.edit') }}">Edit site settings →</a>
 </div>
@@ -41,6 +41,7 @@
         <a href="{{ route('admin.products.index') }}"><span class="quick-icon">◈</span><span><strong>Products</strong><small>Manage {{ $products }} catalogue {{ Str::plural('item', $products) }}</small></span><span>→</span></a>
         <a href="{{ route('admin.chronicles.index') }}"><span class="quick-icon">✎</span><span><strong>Chronicles</strong><small>Manage {{ $chronicles }} {{ Str::plural('article', $chronicles) }}, testimonials, and gallery</small></span><span>→</span></a>
         <a href="{{ route('admin.settings.edit') }}"><span class="quick-icon">⚙</span><span><strong>Site settings</strong><small>Update brand, contact, map, and business details</small></span><span>→</span></a>
+        <a href="{{ route('admin.users.index') }}"><span class="quick-icon">♙</span><span><strong>Users</strong><small>Manage accounts and administrator access</small></span><span>→</span></a>
         <a href="{{ route('admin.profile.edit') }}"><span class="quick-icon">◎</span><span><strong>My account</strong><small>Manage your profile and password</small></span><span>→</span></a>
     </section>
 </div>
